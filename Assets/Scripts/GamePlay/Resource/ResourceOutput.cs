@@ -1,0 +1,15 @@
+﻿using UnityEngine;
+using System.Collections;
+
+
+namespace Resource
+{
+	public class OutgoingResource : MonoBehaviour
+	{
+
+		public const float MAX_QUANTITY = -1;
+
+		public Resource ResourceType;
+		public float Quantity;
+	}
+}
