@@ -2,14 +2,7 @@
 using System.Collections;
 
 public abstract class Character : MonoBehaviour {
-
-    private Skill.Skilled mSkilled;
-
-    public Skill.Skilled Skilled
-    {
-        get { return mSkilled; }
-    }
-    
+	    
 	public string mName;
 	public string CharName {
 		get{
@@ -31,13 +24,10 @@ public abstract class Character : MonoBehaviour {
 	//public events
 	public delegate void NameChanged(string newName);
 	public event NameChanged OnNameChanged;
-
-
+	
 
 	// Use this for initialization
 	void Awake () {
-		
-        mSkilled = GetComponentInChildren<Skill.Skilled>();
 		if (mName == string.Empty) {
 			mName = "No Name";
 		}

@@ -10,6 +10,7 @@ public class OtherPartyGenerator : MonoBehaviour {
 	
 	public OtherParty OtherPartyPrefab;
 	public CharacterGenerator CharacterGenerator;
+	public Transform Parent;
 	public Transform Ground; 
 
 	
@@ -26,11 +27,12 @@ public class OtherPartyGenerator : MonoBehaviour {
 
 		// Generate position
 		newParty.transform.position = GenerateRandomPosition ();
+		newParty.transform.SetParent (Parent);
 
 		// Party size
 		int partySize = (int)System.Math.Floor ((double)Random.Range (MinPartySize, MaxPartySize)+1);
 		//Debug.Log ("New party size : " + partySize.ToString ());
-
+		
 		// Create random characters
 		for(int numMember = 1; numMember <= partySize; numMember ++) {
 			Character newChar = CharacterGenerator.CreateRandomCharacter();

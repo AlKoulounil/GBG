@@ -45,10 +45,10 @@ namespace Encounters
 			int comparison = otherParty.GetTotalStrength ().CompareTo (thisParty.GetTotalStrength ());
 				switch (comparison) {
 				case -1:
-					FightResult (winningParty: thisParty, losingParty: otherParty);
+					FightResult (thisParty, otherParty);
 					break;
 				case 1:
-					FightResult (winningParty: otherParty, losingParty: thisParty);
+					FightResult (otherParty, thisParty);
 					break;
 				case 0:
 					Debug.Log ("Deuce.");

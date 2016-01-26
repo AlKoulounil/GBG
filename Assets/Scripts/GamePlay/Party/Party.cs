@@ -9,10 +9,19 @@ public abstract class Party : MonoBehaviour {
 	public event PartyChanged OnPartyChanged;
 
 	protected Dictionary<string, Character> mCharacters = null;
+	protected Transform mGroupComposition;
 
 	// Use this for initialization
 	void Awake () {
+		mGroupComposition = transform.FindChild ("GroupComposition");
 		mCharacters = new Dictionary<string, Character>();
+
+		List<Character> characters = new List<Character> ();
+		mGroupComposition.GetComponentsInChildren<Character>(characters);
+		
+		foreach (Character c in characters) {
+			this.AddCharacter (c);
+		}
 
 		//Debug.Log("number of characters in party : " + mCharacters.Count);
 	}
@@ -22,6 +31,7 @@ public abstract class Party : MonoBehaviour {
 			newChar.name += "I";
 		}
 		mCharacters.Add(newChar.name, newChar);
+		newChar.transform.SetParent (mGroupComposition);
 
 		if (OnPartyChanged != null) {OnPartyChanged ();}
 	}
@@ -57,14 +67,14 @@ public abstract class Party : MonoBehaviour {
 
     public float GetTotalStrength()
     {
-        float total = 0.0f;
-        foreach (Character ch in mCharacters.Values)
-        {
-			total += (float)ch.Skilled.Skills[(int)Skill.ALL_SKILLS.STR].Value;
-        }
-        return total;
-    }
-
+//        float total = 0.0f;
+//        foreach (Character ch in mCharacters.Values)
+//        {
+//			total += ;
+//        }
+		return mCharacters.Count;
+	}
+	
 	public virtual void RefreshPartyStats() {
 
 	}
