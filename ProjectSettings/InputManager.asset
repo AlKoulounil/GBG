@@ -70,8 +70,8 @@ InputManager:
     axis: 0
     joyNum: 11
   - serializedVersion: 3
-    m_Name: PartyMenu
-    descriptiveName: Open party menu
+    m_Name: GroupMenu
+    descriptiveName: Open group menu
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: p

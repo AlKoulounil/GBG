@@ -1,40 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DisplayMenu : MonoBehaviour {
+namespace GUI
+{
+	public class DisplayMenu : MonoBehaviour
+	{
 
-	public GameObject InGameMenu;
-	public GameObject PartyMenu;
+		public GameObject InGameMenu;
+		public GameObject GroupMenu;
 
-	// Use this for initialization
-	void Awake () {
-		if (InGameMenu == null) {
-			Debug.LogError ("InGameMenu is not set in DisplayMenu script.");
-		}
+		// Use this for initialization
+		void Awake ()
+		{
+			if (InGameMenu == null) {
+				Debug.LogError ("InGameMenu is not set in DisplayMenu script.");
+			}
 		
-		if (PartyMenu == null) {
-			Debug.LogError ("PartyMenu is not set in DisplayMenu script.");
-		}
+			if (GroupMenu == null) {
+				Debug.LogError ("GroupMenu is not set in DisplayMenu script.");
+			}
 
-		PartyMenu.SetActive (false);
-		InGameMenu.SetActive (true);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown ("PartyMenu")) {
-			Timer.instance.Pause = true;
-			PartyMenu.SetActive (true);
-			InGameMenu.SetActive (false);
-			if (OnDisplayPartyMenu != null) {OnDisplayPartyMenu ();}
-		} else if (Input.GetButtonUp  ("PartyMenu")) {
-			PartyMenu.SetActive (false);
+			GroupMenu.SetActive (false);
 			InGameMenu.SetActive (true);
-			Timer.instance.Pause = false;
 		}
-	}
+	
+		// Update is called once per frame
+		void Update ()
+		{
+			if (Input.GetButtonDown ("GroupMenu")) {
+				Timer.instance.Pause = true;
+				GroupMenu.SetActive (true);
+				InGameMenu.SetActive (false);
+				if (OnDisplayGroupMenu != null) {
+					OnDisplayGroupMenu ();
+				}
+			} else if (Input.GetButtonUp ("GroupMenu")) {
+				GroupMenu.SetActive (false);
+				InGameMenu.SetActive (true);
+				Timer.instance.Pause = false;
+			}
+		}
 
 		//public events
-	public delegate void DisplayPartyMenu();
-	public static event DisplayPartyMenu OnDisplayPartyMenu;
+		public delegate void DisplayGroupMenu ();
+
+		public static event DisplayGroupMenu OnDisplayGroupMenu;
+	}
 }
