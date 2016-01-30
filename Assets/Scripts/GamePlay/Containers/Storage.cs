@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-namespace Resources
+namespace Containers
 {
 	public class Storage : MonoBehaviour
 	{

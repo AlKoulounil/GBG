@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Effects;
 using Resources;
+using Containers;
 
 
 namespace Triggers
@@ -19,7 +21,7 @@ namespace Triggers
 
 		void onAwake() {
 			mStorageKeys = new Dictionary<STORAGE_KEYS, Storage> ();
-			Resources.Storage self = this.GetComponentInParent<Storage> ();
+			Storage self = this.GetComponentInParent<Storage> ();
 			mStorageKeys.Add(STORAGE_KEYS.SELF, self);
 
 			mTranformations = new List<Transformation>( this.GetComponents<Transformation>());

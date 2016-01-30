@@ -27,7 +27,6 @@ GameObject:
   - 4: {fileID: 458400}
   - 114: {fileID: 11447678}
   - 114: {fileID: 11440046}
-  - 114: {fileID: 11435840}
   m_Layer: 0
   m_Name: Transfo FoodLoss
   m_TagString: Untagged
@@ -77,19 +76,6 @@ MonoBehaviour:
   Minimum: 0
   HasMax: 0
   Maximum: 0
---- !u!114 &11435840
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cfdb63a51b3bc444a656aa0ecebf35a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ResourceType: {fileID: 0}
-  Quantity: 1
 --- !u!114 &11440046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,7 +102,10 @@ MonoBehaviour:
   Input: 0
   Output: 0
   QuantityPerRun: 1
-  Probability: 1
+  ResourceInputs:
+  - ResourceType: {fileID: 0}
+    Quantity: 1
+  ResourceOutputs: []
 --- !u!114 &11483626
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Resources;
 
 
-namespace Resources
+namespace Values
 {
 
 	public class Stock : MonoBehaviour

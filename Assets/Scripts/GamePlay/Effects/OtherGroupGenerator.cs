@@ -2,7 +2,7 @@
 using System.Collections;
 using Beings;
 
-namespace Generators
+namespace Effects
 {
 	public class OtherGroupGenerator : MonoBehaviour
 	{
