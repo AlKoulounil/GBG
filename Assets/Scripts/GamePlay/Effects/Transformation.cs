@@ -8,7 +8,7 @@ using Resources;
 
 namespace Effects
 {
-	public class Transformation : MonoBehaviour
+	public class Transformation : MonoBehaviour, IEffect
 	{
 		public const float MAX_QUANTITY = -1;
 
@@ -27,7 +27,7 @@ namespace Effects
 		public InOutResource[] ResourceInputs;
 		public InOutResource[] ResourceOutputs;
 
-		public void Run(Dictionary<STORAGE_KEYS, Storage> targets) {
+		public void Apply(Dictionary<STORAGE_KEYS, Storage> targets) {
 			//TODO
 		}
 

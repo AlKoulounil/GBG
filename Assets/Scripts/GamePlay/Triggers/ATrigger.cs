@@ -16,7 +16,7 @@ namespace Triggers
 
 	public abstract class ATrigger : MonoBehaviour
 	{
-		protected List<Transformation> mTranformations;
+		protected List<IEffect> mEffects;
 		private Dictionary<STORAGE_KEYS, Storage> mStorageKeys;
 
 		void onAwake() {
@@ -24,12 +24,12 @@ namespace Triggers
 			Storage self = this.GetComponentInParent<Storage> ();
 			mStorageKeys.Add(STORAGE_KEYS.SELF, self);
 
-			mTranformations = new List<Transformation>( this.GetComponents<Transformation>());
+			mEffects = new List<IEffect>( this.GetComponents<IEffect>());
 		}
 
 		public virtual void Go() {
-			foreach (Transformation transform in mTranformations) {
-				transform.Run (mStorageKeys);
+			foreach (IEffect effect in mEffects) {
+				effect.Apply (mStorageKeys);
 			}
 		}
 
