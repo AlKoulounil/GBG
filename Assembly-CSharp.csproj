@@ -50,6 +50,9 @@
      <Compile Include="Assets\Scripts\GUI\GroupMenu\GroupMenu.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Beings\Character.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Beings\Group.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Conditions\ConditionCompare.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Conditions\ConditionStraightRoll.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Conditions\ICondition.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Containers\Storage.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Effects\CharacterGenerator.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Effects\IEffect.cs" />

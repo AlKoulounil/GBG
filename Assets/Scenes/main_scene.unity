@@ -1163,12 +1163,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11408486, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
-      propertyPath: ResourceInputs.Array.data[0].ResourceType
+    - target: {fileID: 11475176, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
+      propertyPath: ResourceOutputs.Array.data[0].ResourceType
       value: 
       objectReference: {fileID: 807845653}
-    - target: {fileID: 11413404, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
-      propertyPath: Type
+    - target: {fileID: 11417626, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
+      propertyPath: ResourceDefinition
+      value: 
+      objectReference: {fileID: 1816561702}
+    - target: {fileID: 11466528, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
+      propertyPath: InputValue
+      value: 
+      objectReference: {fileID: 1816561702}
+    - target: {fileID: 11408486, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
+      propertyPath: ResourceInputs.Array.data[0].ResourceType
       value: 
       objectReference: {fileID: 807845653}
     m_RemovedComponents: []
@@ -1809,6 +1817,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 807845652}
+  - {fileID: 1816561701}
   m_Father: {fileID: 194503335}
   m_RootOrder: 3
 --- !u!1 &1489143766
@@ -2146,6 +2155,47 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1816561700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1816561701}
+  - 114: {fileID: 1816561702}
+  m_Layer: 0
+  m_Name: FoodFinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1816561701
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1816561700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1298860116}
+  m_RootOrder: 1
+--- !u!114 &1816561702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1816561700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb2c4c357dd291418ce2fff568ff32d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResourceName: foodfinder
+  IsInteger: 1
 --- !u!1 &1836898232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,7 +2309,7 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 132750, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
   m_PrefabInternal: {fileID: 1811206196}
---- !u!114 &1932169867
+--- !u!114 &1932169870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2270,6 +2320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d914949b8c75846867754db52b9991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ResourceDefinition: {fileID: 0}
   Name: Hunger
   Formula: 10 - Food
   Value: 0

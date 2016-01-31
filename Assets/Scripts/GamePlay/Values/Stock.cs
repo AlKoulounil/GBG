@@ -9,7 +9,7 @@ namespace Values
 	public class Stock : MonoBehaviour, IValue
 	{
 
-		public Resource Res;
+		public Resource ResourceDefinition;
 		public float Value;
 
 
@@ -21,7 +21,7 @@ namespace Values
 		public event OnChange HasChanged;
 
 		public void SetValue(float val) {
-			if (Res.IsInteger) {
+			if (ResourceDefinition.IsInteger) {
 				this.Value = (int)Mathf.Floor (val);
 			} else {
 				this.Value = val;
@@ -34,7 +34,7 @@ namespace Values
 		}
 
 		public string GetName() {
-			return Res.ResourceName;
+			return ResourceDefinition.ResourceName;
 		}
 	}
 }
