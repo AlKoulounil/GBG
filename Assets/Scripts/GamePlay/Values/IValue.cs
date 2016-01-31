@@ -1,8 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface IValue {
+namespace Values
+{
 
-	float GetValue ();
-	string GetName ();
+	public delegate void OnChange();
+
+	public interface IValue
+	{
+
+		float GetValue ();
+
+		string GetName ();
+
+		event OnChange HasChanged;
+
+	}
 }

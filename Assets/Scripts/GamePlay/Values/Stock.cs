@@ -18,12 +18,15 @@ namespace Values
 		public bool HasMax = false;
 		public float Maximum = 0;
 
+		public event OnChange HasChanged;
+
 		public void SetValue(float val) {
 			if (Res.IsInteger) {
 				this.Value = (int)Mathf.Floor (val);
 			} else {
 				this.Value = val;
 			}
+			HasChanged ();
 		}
 
 		public float GetValue() {

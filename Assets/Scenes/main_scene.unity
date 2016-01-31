@@ -2139,6 +2139,10 @@ Prefab:
       propertyPath: Value
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 11408486, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
+      propertyPath: ResourceInputs.Array.data[0].ResourceType
+      value: 
+      objectReference: {fileID: 807845653}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
   m_IsPrefabParent: 0
@@ -2251,6 +2255,24 @@ Transform:
   - {fileID: 1172024573}
   m_Father: {fileID: 462983693}
   m_RootOrder: 1
+--- !u!1 &1932169866 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 132750, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
+  m_PrefabInternal: {fileID: 1811206196}
+--- !u!114 &1932169867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932169866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d914949b8c75846867754db52b9991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Hunger
+  Formula: 10 - Food
+  Value: 0
 --- !u!1001 &2004219364
 Prefab:
   m_ObjectHideFlags: 0
