@@ -43,6 +43,8 @@ GameObject:
   - 4: {fileID: 450500}
   - 114: {fileID: 11419820}
   - 114: {fileID: 11436194}
+  - 114: {fileID: 11498482}
+  - 114: {fileID: 11475134}
   m_Layer: 0
   m_Name: Transfo DieOfHunger
   m_TagString: Untagged
@@ -294,6 +296,17 @@ MonoBehaviour:
   LowValue: 0
   HighValue: 20
   Probability: 0
+--- !u!114 &11475134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ff0aa9588c7534bbb6b18fc0d18efb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11475176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,6 +349,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mName: 
+--- !u!114 &11498482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb5ad52233d9c64382a5f66ed9dd64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: Character has died
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

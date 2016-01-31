@@ -1921,6 +1921,33 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1564180897 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 172774, guid: ff50248d07679394fbc92c3743f57e22, type: 2}
+  m_PrefabInternal: {fileID: 739201758}
+--- !u!114 &1564180898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1564180897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ff0aa9588c7534bbb6b18fc0d18efb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1564180899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1564180897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb5ad52233d9c64382a5f66ed9dd64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: Character has died
 --- !u!114 &1586078916 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11450972, guid: faa0ed68578f7e04c9514e8827f34fd4,

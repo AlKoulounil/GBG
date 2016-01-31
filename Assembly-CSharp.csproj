@@ -55,6 +55,8 @@
      <Compile Include="Assets\Scripts\GamePlay\Conditions\ICondition.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Containers\Storage.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Effects\CharacterGenerator.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Effects\EffectDie.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Effects\EffectLog.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Effects\IEffect.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Effects\OtherGroupGenerator.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Effects\Transformation.cs" />
