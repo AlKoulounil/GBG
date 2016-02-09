@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &101516
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 454106}
-  m_Layer: 2
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &110204
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,22 +69,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &184126
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 447978}
-  - 114: {fileID: 11417626}
-  m_Layer: 2
-  m_Name: CharacterSkills
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &190590
 GameObject:
   m_ObjectHideFlags: 1
@@ -142,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462542}
@@ -159,10 +128,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 454106}
+  m_Children: []
   m_Father: {fileID: 437252}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &437252
 Transform:
   m_ObjectHideFlags: 1
@@ -170,26 +138,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: .5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408382}
-  - {fileID: 447978}
   - {fileID: 434562}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &447978
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 437252}
-  m_RootOrder: 1
 --- !u!4 &450500
 Transform:
   m_ObjectHideFlags: 1
@@ -202,18 +157,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 408382}
   m_RootOrder: 1
---- !u!4 &454106
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101516}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 434562}
-  m_RootOrder: 0
 --- !u!4 &462542
 Transform:
   m_ObjectHideFlags: 1
@@ -253,10 +196,10 @@ MonoBehaviour:
   Output: 0
   QuantityPerRun: 1
   ResourceInputs:
-  - ResourceType: {fileID: 0}
+  - Type: {fileID: 0}
     Quantity: 1
   ResourceOutputs:
-  - ResourceType: {fileID: 0}
+  - Type: {fileID: 0}
     Quantity: -1
 --- !u!114 &11413404
 MonoBehaviour:
@@ -266,11 +209,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 132750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d6315ffe7534b642b0bf72622491e96, type: 3}
+  m_Script: {fileID: 11500000, guid: 13240c8ae11d61e419b41448e8b4af31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResourceDefinition: {fileID: 0}
-  Value: 0
+  Type: {fileID: 0}
+  Value: 10
   HasMin: 1
   Minimum: 0
   HasMax: 0
@@ -287,23 +230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DayFrequency: 1
---- !u!114 &11417626
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d6315ffe7534b642b0bf72622491e96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ResourceDefinition: {fileID: 0}
-  Value: 10
-  HasMin: 1
-  Minimum: 0
-  HasMax: 0
-  Maximum: 0
 --- !u!114 &11419820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,11 +302,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 110204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d6315ffe7534b642b0bf72622491e96, type: 3}
+  m_Script: {fileID: 11500000, guid: 13240c8ae11d61e419b41448e8b4af31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResourceDefinition: {fileID: 0}
-  Value: 0
+  Type: {fileID: 0}
+  Value: 10
   HasMin: 1
   Minimum: 0
   HasMax: 0
@@ -412,7 +338,7 @@ MonoBehaviour:
   QuantityPerRun: 1
   ResourceInputs: []
   ResourceOutputs:
-  - ResourceType: {fileID: 0}
+  - Type: {fileID: 0}
     Quantity: 2
 --- !u!114 &11489934
 MonoBehaviour:

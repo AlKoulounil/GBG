@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Resources
+namespace VarTypes
 {
 
-	public class Resource : MonoBehaviour
+	public class VarType : MonoBehaviour
 	{
 		
 		public string ResourceName;

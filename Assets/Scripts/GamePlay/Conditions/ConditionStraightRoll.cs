@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Values;
-using Resources;
+using VarTypes;
 
 namespace Conditions
 {
 	public class ConditionStraightRoll : MonoBehaviour, ICondition
 	{
 
-		public Resource InputValue;
+		public VarType InputValue;
 
 		[Tooltip("Max value for which probability should be 0%")]
 		public float LowValue;

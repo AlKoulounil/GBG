@@ -13,7 +13,7 @@ namespace Effects
 		public int MaxCharStrength;
 		public string[] Names;
 		
-		public  Character CreateRandomCharacter ()
+		public Character CreateRandomCharacter ()
 		{
 			Character c = Instantiate<Character> (CharacterPrefab);
 						

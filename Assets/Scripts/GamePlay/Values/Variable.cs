@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Resources;
+using VarTypes;
 
 
 namespace Values
 {
 
-	public class Stock : MonoBehaviour, IValue
+	public class Variable : AValue
 	{
 
-		public Resource ResourceDefinition;
+		public VarType Type;
 		public float Value;
 
 
@@ -18,23 +18,22 @@ namespace Values
 		public bool HasMax = false;
 		public float Maximum = 0;
 
-		public event OnChange HasChanged;
 
 		public void SetValue(float val) {
-			if (ResourceDefinition.IsInteger) {
+			if (Type.IsInteger) {
 				this.Value = (int)Mathf.Floor (val);
 			} else {
 				this.Value = val;
 			}
-			HasChanged ();
+			TriggerOnChange();
 		}
 
-		public float GetValue() {
+		public override float GetValue() {
 			return this.Value;
 		}
 
-		public string GetName() {
-			return ResourceDefinition.ResourceName;
+		public override string GetName() {
+			return Type.ResourceName;
 		}
 	}
 }

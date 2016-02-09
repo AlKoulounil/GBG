@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Triggers;
 using Containers;
-using Resources;
+using VarTypes;
 
 
 namespace Effects
 {
-	public class Transformation : MonoBehaviour, IEffect
+	public class Transformation : AEffect
 	{
 		public const float MAX_QUANTITY = -1;
 
@@ -19,7 +19,7 @@ namespace Effects
 		[System.SerializableAttribute]
 		public class InOutResource
 		{
-			public Resource ResourceType;
+			public VarType Type;
 			public float Quantity;
 
 		}
@@ -27,7 +27,7 @@ namespace Effects
 		public InOutResource[] ResourceInputs;
 		public InOutResource[] ResourceOutputs;
 
-		public void Apply(Dictionary<STORAGE_KEYS, Storage> targets) {
+		public override void Apply(Dictionary<STORAGE_KEYS, Container> targets) {
 			//TODO
 		}
 

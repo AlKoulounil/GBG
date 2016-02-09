@@ -6,11 +6,11 @@ using Containers;
 
 namespace Effects
 {
-	public class EffectLog : MonoBehaviour, IEffect
+	public class EffectLog : AEffect
 	{
 		public string Message = "Type message to Log Here";
 
-		public void Apply(Dictionary<STORAGE_KEYS, Storage> targets) {
+		public override void Apply(Dictionary<STORAGE_KEYS, Container> targets) {
 			Debug.Log (Message);
 		}
 	}

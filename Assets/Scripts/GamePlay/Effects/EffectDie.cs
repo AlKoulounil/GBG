@@ -6,10 +6,10 @@ using Containers;
 
 namespace Effects
 {
-	public class EffectDie : MonoBehaviour, IEffect
+	public class EffectDie : AEffect
 	{
 
-		public void Apply (Dictionary<STORAGE_KEYS, Storage> targets)
+		public override void Apply (Dictionary<STORAGE_KEYS, Container> targets)
 		{
 			// TODO
 		}

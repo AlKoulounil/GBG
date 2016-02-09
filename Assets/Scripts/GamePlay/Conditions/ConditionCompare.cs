@@ -17,7 +17,7 @@ namespace Conditions
 		/// <summary>
 		/// values used in formula : Stock or Statistic 
 		/// </summary>
-		private IValue[] mUsedValues;
+		private AValue[] mUsedValues;
 
 
 		void Awake ()

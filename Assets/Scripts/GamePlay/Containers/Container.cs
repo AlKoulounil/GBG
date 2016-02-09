@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace Containers
 {
-	public class Storage : MonoBehaviour
+	public class Container : MonoBehaviour
 	{
 
 		public string description;
