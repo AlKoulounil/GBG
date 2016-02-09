@@ -3,8 +3,8 @@ using System.Collections;
 
 namespace Conditions
 {
-	public interface ICondition
+	public abstract class ACondition : MonoBehaviour
 	{
-		bool AllowsEffect();
+		public abstract bool AllowsEffect();
 	}
 }

@@ -4,7 +4,7 @@ using Values;
 
 namespace Conditions
 {
-	public class ConditionCompare : MonoBehaviour, ICondition
+	public class ConditionCompare : ACondition
 	{
 		
 		[Tooltip ("Free written formula to be computed at each call of GetValue")]
@@ -26,7 +26,7 @@ namespace Conditions
 		}
 
 
-		public bool AllowsEffect() {
+		public override bool AllowsEffect() {
 			return Value;
 		}
 	}

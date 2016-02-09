@@ -5,7 +5,7 @@ using VarTypes;
 
 namespace Conditions
 {
-	public class ConditionStraightRoll : MonoBehaviour, ICondition
+	public class ConditionStraightRoll : ACondition
 	{
 
 		public VarType InputValue;
@@ -20,7 +20,7 @@ namespace Conditions
 		[SerializeField]
 		private float Probability;
 
-		public bool AllowsEffect() {
+		public override bool AllowsEffect() {
 			return false;
 		}
 	}
