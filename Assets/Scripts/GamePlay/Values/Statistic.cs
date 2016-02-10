@@ -9,7 +9,6 @@ namespace Values
 	{
 
 		public VarType Type;
-		public string Name;
 
 		[Tooltip ("Free written formula to be computed at each call of GetValue")]
 		public string Formula;
@@ -37,8 +36,5 @@ namespace Values
 			return Value;
 		}
 
-		public override  string GetName() {
-			return Name;
-		}
 	}
 }

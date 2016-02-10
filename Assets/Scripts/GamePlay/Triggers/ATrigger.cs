@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Effects;
 using VarTypes;
-using Containers;
+using Beings;
 
 
 namespace Triggers
@@ -17,14 +17,18 @@ namespace Triggers
 	public abstract class ATrigger : MonoBehaviour
 	{
 		protected List<AEffect> mEffects;
-		private Dictionary<STORAGE_KEYS, Container> mStorageKeys;
+		protected Dictionary<STORAGE_KEYS, ABeing> mStorageKeys = new Dictionary<STORAGE_KEYS, ABeing> ();
 
-		void onAwake() {
-			mStorageKeys = new Dictionary<STORAGE_KEYS, Container> ();
-			Container self = this.GetComponentInParent<Container> ();
-			mStorageKeys.Add(STORAGE_KEYS.SELF, self);
+		protected ABeing parentBeing;
+
+		void onStart() {
 
 			mEffects = new List<AEffect>( this.GetComponents<AEffect>());
+		}
+
+		public void setParentBeing(ABeing parent) {
+			parentBeing = parent;
+			mStorageKeys.Add(STORAGE_KEYS.SELF, parent);
 		}
 
 		public virtual void Go() {

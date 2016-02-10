@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Beings
 {
-	public class Group : MonoBehaviour
+	public class Group : ABeing
 	{
 
 		//public events

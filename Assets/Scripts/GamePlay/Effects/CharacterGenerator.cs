@@ -7,7 +7,6 @@ namespace Effects
 	public class CharacterGenerator : MonoBehaviour
 	{
 
-	
 		public Character CharacterPrefab;
 		public int MinCharStrength;
 		public int MaxCharStrength;

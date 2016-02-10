@@ -8,9 +8,8 @@ namespace Values
 	public abstract class AValue : MonoBehaviour 
 	{
 
-		public abstract float GetValue ();
 
-		public abstract string GetName ();
+		public abstract float GetValue ();
 
 
 		public delegate void OnChange();

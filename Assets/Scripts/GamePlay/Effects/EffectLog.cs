@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Triggers;
-using Containers;
+using Beings;
 
 namespace Effects
 {
@@ -10,7 +10,7 @@ namespace Effects
 	{
 		public string Message = "Type message to Log Here";
 
-		public override void Apply(Dictionary<STORAGE_KEYS, Container> targets) {
+		public override void Apply(Dictionary<STORAGE_KEYS, ABeing> targets) {
 			Debug.Log (Message);
 		}
 	}

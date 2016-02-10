@@ -3,24 +3,19 @@ using System.Collections;
 
 namespace Beings
 {
-	public class Character : MonoBehaviour
+	public class Character : ABeing
 	{
 	    
-		public string mName;
-
 		public string CharName {
 			get {
-				return mName;
+				return name;
 			}
 			set {
 				//Name in the game
-				this.mName = value;
-
-				//Name in Unity
-				this.name = mName;
+				this.name = value;
 
 				if (OnNameChanged != null)
-					OnNameChanged (mName);
+					OnNameChanged (name);
 			}
 
 		}
@@ -34,16 +29,11 @@ namespace Beings
 		// Use this for initialization
 		void Awake ()
 		{
-			if (mName == string.Empty) {
-				mName = "No Name";
+			if (this.name == string.Empty) {
+				this.name = "No Name";
 			}
 		}
 	
-		// Update is called once per frame
-		void Update ()
-		{
-	
-		}
 
 		public void Die ()
 		{

@@ -32,8 +32,5 @@ namespace Values
 			return this.Value;
 		}
 
-		public override string GetName() {
-			return Type.ResourceName;
-		}
 	}
 }

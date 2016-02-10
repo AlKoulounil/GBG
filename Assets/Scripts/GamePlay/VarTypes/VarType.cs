@@ -6,8 +6,7 @@ namespace VarTypes
 
 	public class VarType : MonoBehaviour
 	{
-		
-		public string ResourceName;
+
 
 		public bool IsInteger = true;
 
