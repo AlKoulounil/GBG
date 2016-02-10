@@ -14,7 +14,7 @@ namespace Containers
 		protected List<AValue> values = new List<AValue> ();
 //		protected Dictionary<string,ATrigger> trigger = new Dictionary<string, ATrigger> ();
 
-		void OnStart ()
+		void Start ()
 		{
 			if (ParentBeing == null) {
 				Debug.LogError ("container " + this.name + " has no Parent Being.");

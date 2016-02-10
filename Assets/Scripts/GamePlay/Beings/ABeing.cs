@@ -35,7 +35,8 @@ namespace Beings
 
 			}
 			
-			Debug.Log ("Being " + this.name + " added with " + containers.Count + " containers ");
+//			Debug.Log ("Being " + this.name + " added container " + c.name + " with " + c.getAllValues().Count + " values. ");
+//			Debug.Log ("Being " + this.name + " now has " + values.Count + " values. ");
 		}
 
 	}
