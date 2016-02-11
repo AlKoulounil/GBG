@@ -24,7 +24,7 @@ namespace Triggers
 
 			if (mDaysSinceLast >= DayFrequency) {
 				mDaysSinceLast = 0;
-				this.Go ();
+				this.Go (null);
 			}
 		}
 	}

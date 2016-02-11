@@ -8,7 +8,7 @@ namespace Effects
 	public class EffectDie : AEffect
 	{
 
-		public override void Apply (Context targets)
+		public override void Apply (ABeing target)
 		{
 			// TODO
 		}

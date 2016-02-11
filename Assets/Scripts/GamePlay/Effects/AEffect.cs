@@ -5,5 +5,5 @@ using Beings;
 
 public abstract class AEffect : MonoBehaviour {
 
-	public abstract void Apply(Context targets);
+	public abstract void Apply(ABeing target);
 }

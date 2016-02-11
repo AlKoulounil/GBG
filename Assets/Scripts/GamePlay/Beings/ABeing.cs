@@ -6,6 +6,15 @@ using Triggers;
 
 namespace Beings
 {
+
+	public enum BEING_KEY {
+		SELF,
+		TARGET,
+		GROUP,
+		SUM_CHARS,
+		AVG_CHARS
+	}
+
 	public class ABeing : MonoBehaviour
 	{
 
@@ -36,6 +45,15 @@ namespace Beings
 			
 //			Debug.Log ("Being " + this.name + " added container " + c.name + " with " + c.getAllValues().Count + " values. ");
 //			Debug.Log ("Being " + this.name + " now has " + values.Count + " values. ");
+		}
+
+		public AValue GetValue (string valueName) {
+			if (values.ContainsKey (valueName)) {
+				return values [valueName];
+			} else {
+				Debug.LogError ("value " + valueName + " does not exist in Being " + this.name);
+				return null;
+			}
 		}
 
 	}

@@ -9,7 +9,7 @@ namespace Effects
 	{
 		public string Message = "Type message to Log Here";
 
-		public override void Apply(Context targets) {
+		public override void Apply(ABeing target) {
 			Debug.Log (Message);
 		}
 	}

@@ -18,14 +18,14 @@ namespace Effects
 		{
 			public string VariableName;
 			public float Quantity;
-			public STORAGE_KEYS Destination;
+			public BEING_KEY Destination;
 
 		}
 
 		public InOutVariable[] Inputs;
 		public InOutVariable[] Outputs;
 
-		public override void Apply(Context targets) {
+		public override void Apply(ABeing target) {
 			//TODO
 		}
 
