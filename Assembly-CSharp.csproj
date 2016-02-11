@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\GamePlay\Calculator\AFormula.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Calculator\BoolFormula.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Calculator\FloatFormula.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Calculator\IHasFormula.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Conditions\ACondition.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Conditions\ConditionCompare.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Conditions\ConditionStraightRoll.cs" />
@@ -76,6 +77,8 @@
      <Compile Include="Assets\Scripts\Physics\Movement\IObjectToMove.cs" />
      <Compile Include="Assets\Scripts\Physics\Movement\SetTargetOnClick.cs" />
      <Compile Include="Assets\Scripts\Physics\Time\Timer.cs" />
+     <Compile Include="Assets\Scripts\Tools\Errors.cs" />
+     <Compile Include="Assets\Scripts\Tools\ExpressionParser.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/outils/programmation/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

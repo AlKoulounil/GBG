@@ -9,11 +9,9 @@ namespace Calculator
 {
 	
 
-	[System.SerializableAttribute]
-	public class Formula
+	public abstract class AFormula
 	{
-
-		[Tooltip("Type here a formula, with variables with this format : ([being_key]).[value_name]")]
+		[Tooltip ("Type here a formula, with variables with this format : ([being_key]).[value_name]")]
 		public string FormulaText;
 
 		protected class Parameter
@@ -21,64 +19,72 @@ namespace Calculator
 			public string valueName;
 			public BEING_KEY beingKey;
 			public AValue bindedValue = null;
+			public string alias;
 
-			public Parameter (Match m, MonoBehaviour _parent) {
-				string key = m.Captures[0].Value;
-				if (string.IsNullOrEmpty(key)) {
+			public Parameter (Match m, MonoBehaviour _parent)
+			{
+				string key = m.Groups [1].Value;
+				if (string.IsNullOrEmpty (key)) {
 					beingKey = BEING_KEY.SELF;
 				} else {
 					try {
-						beingKey = (BEING_KEY)Enum.Parse(typeof(BEING_KEY), key.ToUpper());
+						beingKey = (BEING_KEY)Enum.Parse (typeof(BEING_KEY), key.TrimEnd('.').ToUpper ());
 					} catch {
-						Debug.LogError("the being key " + key + " is not recognized in formula of object " + _parent.name);
+						Debug.LogError ("the being key " + key + " is not recognized in formula of object " + _parent.name);
 						beingKey = BEING_KEY.SELF;
 					}
 				}
 
-				valueName = m.Captures [1].Value;
+				valueName = m.Groups [2].Value;
+
+				alias = Enum.GetName (typeof(BEING_KEY), beingKey) + "_" + valueName;
 			}
 		}
 
 
-		private bool isInitialized;
-		private List<Parameter> parameters;
-		private MonoBehaviour parent = null;
-		private ABeing self= null;
-		private ABeing target = null;
+		protected bool isInitialized;
+		protected List<Parameter> parameters;
+		protected MonoBehaviour parent = null;
+		protected ABeing self = null;
+		protected ABeing target = null;
 
-		private static Regex mParser = null;
-		private static Regex Parser {
+		private static Regex mParamRegex = null;
+
+		private static Regex ParamRegex {
 			get {
-				if (mParser == null) {
-					mParser = new Regex("\\b(\\w+)?\\.(\\w+)\\b");
+				if (mParamRegex == null) {
+					mParamRegex = new Regex ("\\b([a-zA-Z]\\w*\\.)?([a-zA-Z]\\w*)\\b");
 				}
-				return mParser;
+				return mParamRegex;
 			}
 		}
 
-		private void Initialize (MonoBehaviour _parent)
+		public virtual void Initialize (MonoBehaviour _parent)
 		{
 			parent = _parent;
-			Debug.Assert(string.IsNullOrEmpty(FormulaText), "Formula is empty for component : " + parent.name);
+			Debug.Assert (!string.IsNullOrEmpty (FormulaText), "Formula is empty for component : " + parent.name);
 
 			parameters = new List<Parameter> ();
-			MatchCollection matches = Parser.Matches (FormulaText);
+			MatchCollection matches = ParamRegex.Matches (FormulaText);
+
 
 			foreach (Match m in matches) {
-				Parameter p = new Parameter (m, _parent);
+				parameters.Add (new Parameter (m, _parent));
 			}
 
+
 			isInitialized = true;
+
 		}
 
 
-		private void SetSelfBeing (ABeing _self)
+		public void SetSelfBeing (ABeing _self)
 		{
-			Debug.Assert(isInitialized, "Calling SetSelfBeing on a non-initialized formula on component " + parent.name);
+			Debug.Assert (!isInitialized, "Calling SetSelfBeing on a non-initialized formula on component " + parent.name);
 			self = _self;
 
-			foreach(Parameter p in parameters) {
-				if(p.beingKey == BEING_KEY.SELF) {
+			foreach (Parameter p in parameters) {
+				if (p.beingKey == BEING_KEY.SELF) {
 					if (_self == null) {
 						p.bindedValue = null;
 					} else {
@@ -89,14 +95,14 @@ namespace Calculator
 		}
 
 		
-		private void SetTargetBeing (ABeing _target)
+		public void SetTargetBeing (ABeing _target)
 		{
-			Debug.Assert(isInitialized, "Calling SetTargetBeing on a non-initialized formula on component " + parent.name);
+			Debug.Assert (!isInitialized, "Calling SetTargetBeing on a non-initialized formula on component " + parent.name);
 
 			target = _target;
 
-			foreach(Parameter p in parameters) {
-				if(p.beingKey == BEING_KEY.SELF) {
+			foreach (Parameter p in parameters) {
+				if (p.beingKey == BEING_KEY.SELF) {
 					if (_target == null) {
 						p.bindedValue = null;
 					} else {
@@ -106,19 +112,18 @@ namespace Calculator
 			}
 		}
 
-
-		public bool GetBooleanResult ()
+		protected double[] PrepareParameterValueList ()
 		{
-			Debug.Assert(isInitialized, "Calling GetBooleanResult on a non-initialized formula on component " + parent.name);
+			Debug.Assert (!isInitialized, "Calling PrepareParameters on a non-initialized formula on component " + parent.name);
+			List<double> parameterValueList = new List<double> ();
 
-			return false;
+			foreach (Parameter p in parameters) {
+				parameterValueList.Add (p.bindedValue.GetValue ());
+			}
+
+
+			return parameterValueList.ToArray ();
 		}
 
-		public float GetFloatResult ()
-		{
-			Debug.Assert(isInitialized, "Calling GetFloatResult on a non-initialized formula on component " + parent.name);
-	
-			return 0f;
-		}
 	}
 }

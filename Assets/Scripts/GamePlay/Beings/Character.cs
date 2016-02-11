@@ -31,6 +31,7 @@ namespace Beings
 			if (this.name == string.Empty) {
 				this.name = "No Name";
 			}
+
 		}
 	
 

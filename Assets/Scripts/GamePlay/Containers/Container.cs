@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Beings;
 using Values;
 using Triggers;
+using Calculator;
 
 namespace Containers
 {
@@ -18,10 +19,12 @@ namespace Containers
 			if (ParentBeing == null) {
 				Debug.LogError ("container " + this.name + " has no Parent Being.");
 			}
+			ParentBeing.AddContainer (this);
 			
 			//Get all child values
 			foreach (AValue v in GetComponentsInChildren<AValue>()) {
 				values.Add (v);
+				v.SetParentContainer (this);
 			}
 
 //			//Get all child triggers
@@ -29,7 +32,6 @@ namespace Containers
 //				values.Add (t.ValueName, v);
 //			}
 
-			ParentBeing.AddContainer (this);
 		}
 
 		public List<AValue> getAllValues ()
