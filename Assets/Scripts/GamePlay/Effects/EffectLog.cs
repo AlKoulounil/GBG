@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using Triggers;
+using Calculator;
 using Beings;
 
 namespace Effects
@@ -10,7 +9,7 @@ namespace Effects
 	{
 		public string Message = "Type message to Log Here";
 
-		public override void Apply(Dictionary<STORAGE_KEYS, ABeing> targets) {
+		public override void Apply(Context targets) {
 			Debug.Log (Message);
 		}
 	}

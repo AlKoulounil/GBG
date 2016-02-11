@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using Triggers;
+using Calculator;
 using Beings;
 using Values;
 
@@ -26,7 +25,7 @@ namespace Effects
 		public InOutVariable[] Inputs;
 		public InOutVariable[] Outputs;
 
-		public override void Apply(Dictionary<STORAGE_KEYS, ABeing> targets) {
+		public override void Apply(Context targets) {
 			//TODO
 		}
 

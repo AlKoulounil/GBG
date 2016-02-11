@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\GamePlay\Beings\ABeing.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Beings\Character.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Beings\Group.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Calculator\Formula.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Conditions\ACondition.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Conditions\ConditionCompare.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Conditions\ConditionStraightRoll.cs" />

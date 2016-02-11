@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Conditions;
 using VarTypes;
+using Calculator;
 
 namespace Values
 {
@@ -11,7 +11,7 @@ namespace Values
 		public VarType Type;
 
 		[Tooltip ("Free written formula to be computed at each call of GetValue")]
-		public string Formula;
+		public Formula Formula;
 
 		/// <summary>
 		/// values used in formula : Stock or Statistic 

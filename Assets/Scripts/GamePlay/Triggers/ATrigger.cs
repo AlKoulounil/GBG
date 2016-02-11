@@ -1,23 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using Effects;
 using VarTypes;
 using Beings;
+using Calculator;
 
 
 namespace Triggers
 {
-	public enum STORAGE_KEYS {
-		SELF,
-		OTHER
-	}
-
 
 	public abstract class ATrigger : MonoBehaviour
 	{
 		protected List<AEffect> mEffects;
-		protected Dictionary<STORAGE_KEYS, ABeing> mStorageKeys = new Dictionary<STORAGE_KEYS, ABeing> ();
+		protected Context mContext = new Context();
 
 		protected ABeing parentBeing;
 
@@ -28,12 +23,12 @@ namespace Triggers
 
 		public void setParentBeing(ABeing parent) {
 			parentBeing = parent;
-			mStorageKeys.Add(STORAGE_KEYS.SELF, parent);
+			mContext.AddToContext(STORAGE_KEYS.SELF, parent);
 		}
 
 		public virtual void Go() {
 			foreach (AEffect effect in mEffects) {
-				effect.Apply (mStorageKeys);
+				effect.Apply (mContext);
 			}
 		}
 

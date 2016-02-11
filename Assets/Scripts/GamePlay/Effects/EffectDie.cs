@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using Triggers;
+using Calculator;
 using Beings;
 
 namespace Effects
@@ -9,7 +8,7 @@ namespace Effects
 	public class EffectDie : AEffect
 	{
 
-		public override void Apply (Dictionary<STORAGE_KEYS, ABeing> targets)
+		public override void Apply (Context targets)
 		{
 			// TODO
 		}
