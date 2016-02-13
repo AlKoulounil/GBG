@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+using System.Collections.Generic;
+using Tools;
+
+namespace PUT_NAMESPACE_HERE {
+
+	public class #SCRIPTNAME# : MonoBehaviour {
+
+	}
+}

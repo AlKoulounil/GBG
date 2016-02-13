@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace Beings
 {
@@ -32,6 +31,7 @@ namespace Beings
 			if (this.name == string.Empty) {
 				this.name = "No Name";
 			}
+
 		}
 	
 

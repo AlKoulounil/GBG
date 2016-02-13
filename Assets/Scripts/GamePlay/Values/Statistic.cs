@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Conditions;
 using VarTypes;
+using Calculator;
+using Beings;
 
 namespace Values
 {
-	public class Statistic : AValue
+	public class Statistic : AValue, IHasFormula
 	{
 
 		public VarType Type;
 
 		[Tooltip ("Free written formula to be computed at each call of GetValue")]
-		public string Formula;
+		public FloatFormula Formula;
 
 		/// <summary>
 		/// values used in formula : Stock or Statistic 
@@ -20,20 +21,36 @@ namespace Values
 
 		[SerializeField]
 		[Tooltip ("Do not change it from Unity, for Read-Only use only")]
-		protected float Value = -1;
+		protected double Value = -1;
 
 		void Update ()
 		{
 			//TODO : Update seulement en mode Debug
 		}
 
-		public override float GetValue() {
-			float oldValue = Value;
+		public override double GetValue() {
+			double oldValue = Value;
 			//TODO
 			if (Value != oldValue) {
 				TriggerOnChange();
 			}
 			return Value;
+		}
+
+		public void Initialize() {
+			Formula.Initialize (this);
+		}
+
+		public bool HasSelfBeing () {
+			return Formula.HasSelfBeing ();
+		}
+
+		public void SetSelfBeing (ABeing _self) {
+			Formula.SetSelfBeing (_self);
+		}
+
+		public void SetTargetBeing (ABeing _target) {
+			Formula.SetTargetBeing (_target);
 		}
 
 	}

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Beings
@@ -33,10 +32,10 @@ namespace Beings
 
 		public virtual void AddCharacter (Character newChar)
 		{
-			while (mCharacters.ContainsKey (newChar.name)) {
+			while (mCharacters.ContainsKey (newChar.name.ToLower())) {
 				newChar.name += "I";
 			}
-			mCharacters.Add (newChar.name, newChar);
+			mCharacters.Add (newChar.name.ToLower(), newChar);
 			newChar.transform.SetParent (mGroupComposition);
 
 			if (OnGroupChanged != null) {
@@ -46,8 +45,8 @@ namespace Beings
 
 		public void GiveCharacter (string name, Group otherGroup)
 		{
-			otherGroup.AddCharacter (mCharacters [name]);
-			mCharacters.Remove (name);
+			otherGroup.AddCharacter (mCharacters [name.ToLower()]);
+			mCharacters.Remove (name.ToLower());
 
 			if (OnGroupChanged != null) {
 				OnGroupChanged ();

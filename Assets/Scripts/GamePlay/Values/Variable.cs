@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using VarTypes;
-
+using System;
 
 namespace Values
 {
@@ -10,7 +9,7 @@ namespace Values
 	{
 
 		public VarType Type;
-		public float Value;
+		public double Value;
 
 
 		public bool HasMin = true;
@@ -19,16 +18,16 @@ namespace Values
 		public float Maximum = 0;
 
 
-		public void SetValue(float val) {
+		public void SetValue(double val) {
 			if (Type.IsInteger) {
-				this.Value = (int)Mathf.Floor (val);
+				this.Value = (int)Math.Floor(val);
 			} else {
 				this.Value = val;
 			}
 			TriggerOnChange();
 		}
 
-		public override float GetValue() {
+		public override double GetValue() {
 			return this.Value;
 		}
 

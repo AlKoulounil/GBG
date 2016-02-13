@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
@@ -28,7 +27,7 @@ public class Timer : MonoBehaviour {
 	public static event DayPassed OnDayPassed;
 
 	// class life cycle
-	void Awake () {
+	void Awake () {
 		this.PreciseTime = 0;
 		mInverseSecondsPerDays = 1 / SECONDS_PER_DAY;
 
