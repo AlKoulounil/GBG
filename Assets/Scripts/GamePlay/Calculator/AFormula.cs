@@ -12,8 +12,8 @@ namespace Calculator
 
 	public abstract class AFormula
 	{
-		[Tooltip ("Type here a formula, with variables with this format : ([being_key]).[value_name]")]
-		public string FormulaText;
+		
+		protected string mFormulaText;
 
 		protected class Parameter
 		{
@@ -21,8 +21,9 @@ namespace Calculator
 			public BEING_KEY beingKey;
 			public AValue bindedValue = null;
 			public string alias;
+			public string initialName;
 
-			public Parameter (Match m, MonoBehaviour _parent)
+			public Parameter (Match m, IFormulaParent _parent)
 			{
 				string key = m.Groups [1].Value;
 				if (string.IsNullOrEmpty (key)) {
@@ -31,21 +32,23 @@ namespace Calculator
 					try {
 						beingKey = (BEING_KEY)Enum.Parse (typeof(BEING_KEY), key.TrimEnd('.').ToUpper ());
 					} catch {
-						Debug.LogError ("the being key " + key + " is not recognized in formula of object " + Error.Hierarchy(_parent));
+						Debug.LogError ("the being key " + key + " is not recognized in formula of object " 
+							+ Error.Hierarchy(_parent.GetComponent()));
 						beingKey = BEING_KEY.SELF;
 					}
 				}
 
 				valueName = m.Groups [2].Value;
 
-				alias = Enum.GetName (typeof(BEING_KEY), beingKey) + "_" + valueName;
+				alias = Enum.GetName (typeof(BEING_KEY), beingKey).ToLower() + "_" + valueName;
+				initialName = m.Groups [0].Value;
 			}
 		}
 
 
 		protected bool mIsInitialized;
-		protected List<Parameter> mParameters;
-		protected MonoBehaviour mParent = null;
+		protected Dictionary<string, Parameter> mParameters;
+		protected IFormulaParent mParent = null;
 		protected ABeing mSelf = null;
 		protected ABeing mTarget = null;
 
@@ -60,17 +63,24 @@ namespace Calculator
 			}
 		}
 
-		public virtual void Initialize (MonoBehaviour _parent)
+		public virtual void Initialize (IFormulaParent _parent)
 		{
 			mParent = _parent;
-			Debug.Assert (!string.IsNullOrEmpty (FormulaText), "Formula is empty for component : " + Error.Hierarchy(mParent));
+			mFormulaText = mParent.GetFormulaText ();
 
-			mParameters = new List<Parameter> ();
-			MatchCollection matches = ParamRegex.Matches (FormulaText);
+			Debug.Assert (!string.IsNullOrEmpty (mFormulaText), 
+				"Formula is empty for component : " + Error.Hierarchy(mParent.GetComponent()));
+
+			mParameters = new Dictionary<string, Parameter> ();
+			MatchCollection matches = ParamRegex.Matches (mFormulaText);
 
 
 			foreach (Match m in matches) {
-				mParameters.Add (new Parameter (m, _parent));
+				Parameter p = new Parameter (m, _parent);
+				mFormulaText = mFormulaText.Replace (p.initialName, p.alias);
+				if (!mParameters.ContainsKey(p.alias)) {
+					mParameters.Add (p.alias, p);
+				}
 			}
 
 
@@ -84,10 +94,11 @@ namespace Calculator
 
 		public void SetSelfBeing (ABeing _self)
 		{
-			Debug.Assert (mIsInitialized, "Calling SetSelfBeing on a non-initialized formula on component " + Error.Hierarchy(mParent));
+			Debug.Assert (mIsInitialized, 
+				"Calling SetSelfBeing on a non-initialized formula on component " + Error.Hierarchy(mParent.GetComponent()));
 			mSelf = _self;
 
-			foreach (Parameter p in mParameters) {
+			foreach (Parameter p in mParameters.Values) {
 				if (p.beingKey == BEING_KEY.SELF) {
 					if (_self == null) {
 						p.bindedValue = null;
@@ -101,11 +112,12 @@ namespace Calculator
 		
 		public void SetTargetBeing (ABeing _target)
 		{
-			Debug.Assert (mIsInitialized, "Calling SetTargetBeing on a non-initialized formula on component " + Error.Hierarchy(mParent));
+			Debug.Assert (mIsInitialized, 
+				"Calling SetTargetBeing on a non-initialized formula on component " + Error.Hierarchy(mParent.GetComponent()));
 
 			mTarget = _target;
 
-			foreach (Parameter p in mParameters) {
+			foreach (Parameter p in mParameters.Values) {
 				if (p.beingKey == BEING_KEY.SELF) {
 					if (_target == null) {
 						p.bindedValue = null;
@@ -118,15 +130,34 @@ namespace Calculator
 
 		protected double[] PrepareParameterValueList ()
 		{
-			Debug.Assert (mIsInitialized, "Calling PrepareParameters on a non-initialized formula on component " + Error.Hierarchy(mParent));
+			Debug.Assert (mIsInitialized, 
+				"Calling PrepareParameters on a non-initialized formula on component " 
+				+ Error.Hierarchy(mParent.GetComponent()));
 			List<double> parameterValueList = new List<double> ();
 
-			foreach (Parameter p in mParameters) {
+			foreach (Parameter p in mParameters.Values) {
 				parameterValueList.Add (p.bindedValue.GetValue ());
 			}
 
 
 			return parameterValueList.ToArray ();
+		}
+
+		public List<AValue> GetAllBindedValues() {
+			Debug.Assert (mIsInitialized, 
+				"Calling GetAllBindedValues on a non-initialized formula on component " 
+				+ Error.Hierarchy(mParent.GetComponent()));
+			
+			List<AValue> bindedValues = new List<AValue> ();
+
+
+			foreach (Parameter p in mParameters.Values) {
+				if (p.bindedValue != null) {
+					bindedValues.Add (p.bindedValue);
+				}
+			}
+
+			return bindedValues;
 		}
 
 	}

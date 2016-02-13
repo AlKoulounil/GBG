@@ -4,6 +4,9 @@ using Beings;
 
 namespace Calculator {
 
+	/// <summary>
+	/// This interface is for all Components that have at least one formula.
+	/// </summary>
 	public interface IHasFormula {
 		void Initialize();
 		bool HasSelfBeing ();

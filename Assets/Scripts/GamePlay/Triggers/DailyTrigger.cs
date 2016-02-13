@@ -11,6 +11,14 @@ namespace Triggers
 
 		private int mDaysSinceLast = 0;
 
+		protected override void Start() {
+			base.Start ();
+			if (this.enabled) {
+				mDaysSinceLast = 0;
+				Timer.OnDayPassed += DayPassed;
+			}
+		}
+
 		void onEnable() {
 			mDaysSinceLast = 0;
 			Timer.OnDayPassed += DayPassed;

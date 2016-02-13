@@ -15,8 +15,7 @@ namespace Triggers
 
 		protected ABeing parentBeing;
 
-		void onStart() {
-
+		protected virtual void Start() {
 			mEffects = new List<AEffect>( this.GetComponents<AEffect>());
 		}
 

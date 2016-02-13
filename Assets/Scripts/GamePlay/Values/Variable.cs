@@ -7,8 +7,7 @@ namespace Values
 
 	public class Variable : AValue
 	{
-
-		public VarType Type;
+		
 		public double Value;
 
 
@@ -16,10 +15,11 @@ namespace Values
 		public float Minimum = 0;
 		public bool HasMax = false;
 		public float Maximum = 0;
+		public bool IsInteger = true;
 
 
 		public void SetValue(double val) {
-			if (Type.IsInteger) {
+			if (this.IsInteger) {
 				this.Value = (int)Math.Floor(val);
 			} else {
 				this.Value = val;
