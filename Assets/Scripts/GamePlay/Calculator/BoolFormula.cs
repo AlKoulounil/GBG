@@ -10,7 +10,8 @@ namespace Calculator {
 
 		public bool GetResult ()
 		{
-			Debug.Assert(mIsInitialized, "Calling GetBooleanResult on a non-initialized formula on component " + Error.Hierarchy(mParent));
+			Debug.Assert(mIsInitialized, "Calling GetBooleanResult on a non-initialized formula on component " 
+				+ Error.Hierarchy(mParent.GetComponent()));
 
 			//TODO
 			return false;

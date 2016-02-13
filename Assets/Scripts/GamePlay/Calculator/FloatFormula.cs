@@ -13,17 +13,18 @@ namespace Calculator {
 
 		public double GetResult ()
 		{
-			Debug.Assert(mIsInitialized, "Calling GetFloatResult on a non-initialized formula on component " + Error.Hierarchy(mParent));
+			Debug.Assert(mIsInitialized, "Calling GetFloatResult on a non-initialized formula on component " 
+				+ Error.Hierarchy(mParent.GetComponent()));
 			return ApplyFormula (this.PrepareParameterValueList());
 		}
 
-		public override void Initialize (MonoBehaviour _parent)
+		public override void Initialize (IFormulaParent _parent)
 		{
 			base.Initialize (_parent);
 
 			ExpressionParser parser = new ExpressionParser ();
-			Expression expression = parser.EvaluateExpression (FormulaText);
-			ApplyFormula = expression.ToDelegate(mParameters.ConvertAll<string> (t => t.alias).ToArray());
+			Expression expression = parser.EvaluateExpression (mFormulaText);
+			ApplyFormula = expression.ToDelegate(new List<string>(mParameters.Keys).ToArray());
 		}
 	}
 }

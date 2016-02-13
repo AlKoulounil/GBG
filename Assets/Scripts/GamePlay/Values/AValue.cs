@@ -16,7 +16,9 @@ namespace Values
 		public event OnChange Change;
 		
 		protected void TriggerOnChange() {
-			Change ();
+			if (Change != null) {
+				Change ();
+			}
 		}
 
 		public void SetParentContainer(Container c) {

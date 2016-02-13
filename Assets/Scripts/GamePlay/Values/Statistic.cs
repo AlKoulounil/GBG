@@ -6,13 +6,13 @@ using Beings;
 
 namespace Values
 {
-	public class Statistic : AValue, IHasFormula
+	public class Statistic : AValue, IHasFormula, IFormulaParent
 	{
+		
+		[Tooltip ("Type here a formula, with variables with this format : ([being_key]).[value_name]")]
+		public string FormulaText;
 
-		public VarType Type;
-
-		[Tooltip ("Free written formula to be computed at each call of GetValue")]
-		public FloatFormula Formula;
+		protected FloatFormula Formula;
 
 		/// <summary>
 		/// values used in formula : Stock or Statistic 
@@ -23,14 +23,11 @@ namespace Values
 		[Tooltip ("Do not change it from Unity, for Read-Only use only")]
 		protected double Value = -1;
 
-		void Update ()
-		{
-			//TODO : Update seulement en mode Debug
-		}
-
 		public override double GetValue() {
 			double oldValue = Value;
-			//TODO
+
+			Value = Formula.GetResult ();
+
 			if (Value != oldValue) {
 				TriggerOnChange();
 			}
@@ -38,6 +35,7 @@ namespace Values
 		}
 
 		public void Initialize() {
+			Formula = new FloatFormula ();
 			Formula.Initialize (this);
 		}
 
@@ -47,11 +45,25 @@ namespace Values
 
 		public void SetSelfBeing (ABeing _self) {
 			Formula.SetSelfBeing (_self);
+			foreach(AValue v in Formula.GetAllBindedValues()) {
+				v.Change += Refresh;
+			}
 		}
 
 		public void SetTargetBeing (ABeing _target) {
 			Formula.SetTargetBeing (_target);
 		}
 
+		void Refresh() {
+			GetValue ();
+		}
+
+		public Component GetComponent(){
+			return this;
+		}
+
+		public string GetFormulaText() {
+			return FormulaText;
+		}
 	}
 }

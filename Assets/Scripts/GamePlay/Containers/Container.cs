@@ -13,6 +13,7 @@ namespace Containers
 		
 		protected ABeing mParent = null;
 		protected List<AValue> mValues = null;
+		protected List<Variable> mVariables = null;
 		protected bool mInitialized = false;
 //		protected Dictionary<string,ATrigger> trigger = new Dictionary<string, ATrigger> ();
 
@@ -29,11 +30,17 @@ namespace Containers
 				return;
 			}
 			mValues = new List<AValue>();
+			mVariables = new List<Variable> ();
 
 			//Retrieve all child values
 			foreach (AValue v in GetComponentsInChildren<AValue>()) {
 				mValues.Add (v);
 				v.SetParentContainer (this);
+			}
+
+			//Retrieve all child variables (which are also values but may be accessed specifically
+			foreach (Variable v in GetComponentsInChildren<Variable>()) {
+				mVariables.Add (v);
 			}
 
 			//Set self being to all formulas
@@ -48,6 +55,12 @@ namespace Containers
 		{
 			Debug.Assert(mInitialized , "Container " + Error.Hierarchy(this) + " has not been initialized when calling GetAllValues");
 			return mValues;
+		}
+
+		public List<Variable> GetAllVariables ()
+		{
+			Debug.Assert(mInitialized , "Container " + Error.Hierarchy(this) + " has not been initialized when calling GetAllVariables");
+			return mVariables;
 		}
 
 		public void SetSelfToAllFormula() {

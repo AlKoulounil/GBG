@@ -115,7 +115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &196284
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,8 +294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3acc406568355d49b1a3278a63dd448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuantityPerRun: 1
-  Inputs: []
+  MaxQuantityPerRun: 1
+  Inputs:
+  - VariableName: food
+    QuantityFormula: 1
+    Destination: 0
   Outputs: []
 --- !u!114 &11442614
 MonoBehaviour:
@@ -320,9 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d914949b8c75846867754db52b9991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: {fileID: 0}
-  Formula:
-    FormulaText: 20-food
+  FormulaText: 20-food
   Value: -1
 --- !u!114 &11458894
 MonoBehaviour:
@@ -335,7 +336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9710907fd9cd3464e988c90fcc03b2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentBeing: {fileID: 11412748}
 --- !u!114 &11458994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,7 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9710907fd9cd3464e988c90fcc03b2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentBeing: {fileID: 11412748}
 --- !u!114 &11475618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,12 +358,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13240c8ae11d61e419b41448e8b4af31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: {fileID: 0}
-  Value: 0
+  Value: 10
   HasMin: 1
   Minimum: 0
   HasMax: 0
   Maximum: 0
+  IsInteger: 1
 --- !u!114 &11490746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,7 +375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9710907fd9cd3464e988c90fcc03b2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentBeing: {fileID: 11412748}
 --- !u!114 &11493748
 MonoBehaviour:
   m_ObjectHideFlags: 1

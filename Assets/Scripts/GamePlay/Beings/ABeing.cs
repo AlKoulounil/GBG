@@ -24,6 +24,7 @@ namespace Beings
 		protected Dictionary<string,ABeing> mDirectChildren = new Dictionary<string, ABeing> ();
 		protected Dictionary<string,Container> mContainers = new Dictionary<string, Container> ();
 		protected Dictionary<string,AValue> mValues = new Dictionary<string, AValue> ();
+		protected Dictionary<string,Variable> mVariables = new Dictionary<string, Variable> ();
 		protected bool mIsInitialized = false;
 		//		protected Dictionary<string,ATrigger> trigger = new Dictionary<string, ATrigger> ();
 
@@ -71,6 +72,15 @@ namespace Beings
 						}
 
 					}
+
+					foreach (Variable v in c.GetAllVariables()) {
+						if (!mVariables.ContainsKey (v.name.ToLower())) {
+							mVariables.Add (v.name.ToLower(), v);
+						} else {
+							Debug.LogError ("Conflicting variable names in " + Error.Hierarchy(this) + " : " + v.name);
+						}
+
+					}
 				}
 			}
 
@@ -88,9 +98,20 @@ namespace Beings
 		public AValue GetValue (string valueName)
 		{
 			if (mValues.ContainsKey (valueName.ToLower())) {
-				return mValues [valueName];
+				return mValues [valueName.ToLower()];
 			} else {
 				Debug.LogError ("value " + valueName.ToLower() + " does not exist in Being " + Error.Hierarchy(this));
+				return null;
+			}
+		}
+
+
+		public Variable GetVariable (string varName)
+		{
+			if (mVariables.ContainsKey (varName.ToLower())) {
+				return mVariables [varName.ToLower()];
+			} else {
+				Debug.LogError ("value " + varName.ToLower() + " does not exist in Being " + Error.Hierarchy(this));
 				return null;
 			}
 		}
