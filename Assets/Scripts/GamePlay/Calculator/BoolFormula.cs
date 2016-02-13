@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Tools;
 
 namespace Calculator {
 
@@ -9,7 +10,7 @@ namespace Calculator {
 
 		public bool GetResult ()
 		{
-			Debug.Assert(!isInitialized, "Calling GetBooleanResult on a non-initialized formula on component " + parent.name);
+			Debug.Assert(mIsInitialized, "Calling GetBooleanResult on a non-initialized formula on component " + Error.Hierarchy(mParent));
 
 			//TODO
 			return false;

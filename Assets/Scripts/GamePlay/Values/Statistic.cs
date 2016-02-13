@@ -37,10 +37,13 @@ namespace Values
 			return Value;
 		}
 
-		void Start() {
+		public void Initialize() {
 			Formula.Initialize (this);
 		}
 
+		public bool HasSelfBeing () {
+			return Formula.HasSelfBeing ();
+		}
 
 		public void SetSelfBeing (ABeing _self) {
 			Formula.SetSelfBeing (_self);

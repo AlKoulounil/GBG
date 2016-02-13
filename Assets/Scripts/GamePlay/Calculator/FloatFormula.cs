@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Tools;
 using Tools.ExpressionParser;
 
 namespace Calculator {
@@ -12,7 +13,7 @@ namespace Calculator {
 
 		public double GetResult ()
 		{
-			Debug.Assert(!isInitialized, "Calling GetFloatResult on a non-initialized formula on component " + parent.name);
+			Debug.Assert(mIsInitialized, "Calling GetFloatResult on a non-initialized formula on component " + Error.Hierarchy(mParent));
 			return ApplyFormula (this.PrepareParameterValueList());
 		}
 
@@ -22,7 +23,7 @@ namespace Calculator {
 
 			ExpressionParser parser = new ExpressionParser ();
 			Expression expression = parser.EvaluateExpression (FormulaText);
-			ApplyFormula = expression.ToDelegate(parameters.ConvertAll<string> (t => t.alias).ToArray());
+			ApplyFormula = expression.ToDelegate(mParameters.ConvertAll<string> (t => t.alias).ToArray());
 		}
 	}
 }
